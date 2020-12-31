@@ -37,16 +37,17 @@
 二阶段-提交
 1. 收到TC分支提交请求,异步提交,RM立即上报TC
 2. 异步批量删对应undo_log记录
-实际场景下的SEATA AT模式的实现过程
+#### SEATA AT模式的实现过程
 由dealer-app发起全局事务,动态数据源的方式调用dealer-service、agent-service和rpc的方式调用scf服务,RM(相当于dataSource)将各自的本地事务执行情况汇报给TC,最终再有TC决定全局事务的提交或回滚
 某个节点回滚的时候突然宕机了咋办?
-Server端会通过定时任务向其派发回滚请求
+server端会通过定时任务向其派发回滚请求
+![avatar](https://github.com/1515869898/blog/blob/gh-pages/spring%20cloud%20alibaba/pic/seata-1.png)
 
-
-AT模式写隔离场景
+#### AT模式写隔离场景
 AT模式默认设置的隔离级别是读未提交,写已提交,上面有讲过回滚过程可能发生脏写产生的原因,建议控制场景,或者加版本号的方式严格避免发生
+![avatar](https://github.com/1515869898/blog/blob/gh-pages/spring%20cloud%20alibaba/pic/seata-2.png)
 
+#### 项目的整体架构图
 
-项目的整体架构图
-
+![avatar](https://github.com/1515869898/blog/blob/gh-pages/spring%20cloud%20alibaba/pic/seata-3.png)
 
