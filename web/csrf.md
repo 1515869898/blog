@@ -6,6 +6,19 @@ CSRF跨站点请求伪造(Cross—Site Request Forgery)，跟XSS攻击一样，�
 ####  浏览器同源策略
 * 只要满足以下三项相同,则可以确定两个页面是来自同一个源的:
    ``协议,域名,端口``
+![avatar](https://github.com/1515869898/blog/blob/gh-pages/web/img/csrf-2.png)
 
+####  场景演示
 
-    
+1. 如何发起攻击,及攻击场景
+2. get 为何不安全,post就一定安全吗
+3. 关于referer https://baike.baidu.com/item/HTTP_REFERER/5358396?fr=aladdin 
+4. 如何应对    关闭跨域?  csrfToken;  SameSite
+####  实践及源码分析
+1. spring security 如何配置csrf
+- [ ] spring security HttpSessionCsrfTokenRepository   
+- [x] spring security CookieCsrfTokenRepository
+3. CsrfFilter  执行的一个问题  org.springframework.security.web.csrf
+4. LazyCsrfTokenRepository
+#### 扩展
+vulhub
